@@ -5,11 +5,13 @@ import {AppComponent} from "./app.component";
 import {HttpClientModule} from "@angular/common/http";
 import {AuthModule} from "./auth/auth.module";
 import { LogoutComponent } from './logout/logout.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LogoutComponent,
+    ProfileComponent,
   ],
   imports: [
     AppRoutingModule,
