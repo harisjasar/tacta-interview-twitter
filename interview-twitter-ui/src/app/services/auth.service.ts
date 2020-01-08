@@ -39,6 +39,11 @@ export class AuthService {
     localStorage.setItem("username", username);
   }
 
+  isUserLoggedIn(): boolean {
+    const username = localStorage.getItem("username");
+    return username ? true : false;
+  }
+
   logout() {
     this.clearAuthToken();
     this.clearCredentials();

@@ -5,10 +5,9 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li routerLinkActive="active"><a routerLink="tweets/{{getCurrentUser()}}">My tweets</a>
-        </li>
-        <li routerLinkActive="active"><a routerLink="tweets">Tweets</a>
-        </li>
+        <li routerLinkActive="active"><a *ngIf="authService.isUserLoggedIn()" routerLink="tweets/{{getCurrentUser()}}">My tweets</a></li>
+        <li routerLinkActive="active"><a *ngIf="authService.isUserLoggedIn()" routerLink="tweets">Tweets</a></li>
+        <li routerLinkActive="active"><a *ngIf="authService.isUserLoggedIn()" routerLink="/logout">Logout</a></li>
       </ul>
     </div>
   </div>
