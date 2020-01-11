@@ -8,6 +8,8 @@
         <li routerLinkActive="active"><a *ngIf="authService.isUserLoggedIn()" routerLink="tweets/{{getCurrentUser()}}">My tweets</a></li>
         <li routerLinkActive="active"><a *ngIf="authService.isUserLoggedIn()" routerLink="tweets">Tweets</a></li>
         <li routerLinkActive="active"><a *ngIf="authService.isUserLoggedIn()" routerLink="/logout">Logout</a></li>
+        <li routerLinkActive="active"><a *ngIf="authService.isUserLoggedIn()" routerLink="profile">My profile</a></li>
+        
       </ul>
     </div>
   </div>
