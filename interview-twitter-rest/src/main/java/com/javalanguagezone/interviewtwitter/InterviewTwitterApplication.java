@@ -13,49 +13,52 @@ import org.springframework.stereotype.Component;
 @SpringBootApplication
 public class InterviewTwitterApplication {
 
-  public static void main(String[] args) {
-    SpringApplication.run(InterviewTwitterApplication.class, args);
-  }
-
-  @Component
-  public static class BootstrapBitcoinEvangelists implements ApplicationRunner {
-
-    private UserRepository userRepository;
-    private TweetRepository tweetRepository;
-
-    public BootstrapBitcoinEvangelists(UserRepository userRepository, TweetRepository tweetRepository) {
-      this.userRepository = userRepository;
-      this.tweetRepository = tweetRepository;
+    public static void main(String[] args) {
+        SpringApplication.run(InterviewTwitterApplication.class, args);
     }
 
-    @Override
-    public void run(ApplicationArguments args) {
-      User rogerVer = userRepository.save(new User("rogerkver", "password"));
-      User andreasAntonopoulos = userRepository.save(new User("aantonop", "password"));
-      User vitalikButerin = userRepository.save(new User("VitalikButerin", "password"));
-      User charlieLee = userRepository.save(new User("SatoshiLite", "password"));
-      User satoshiNakamoto = userRepository.save(new User("satoshiNakamoto", "password"));
+    @Component
+    public static class BootstrapBitcoinEvangelists implements ApplicationRunner {
 
-      vitalikButerin.addFollowing(satoshiNakamoto, rogerVer);
-      userRepository.save(vitalikButerin);
+        private UserRepository userRepository;
+        private TweetRepository tweetRepository;
 
-      rogerVer.addFollowing(satoshiNakamoto, andreasAntonopoulos);
-      userRepository.save(rogerVer);
+        public BootstrapBitcoinEvangelists(UserRepository userRepository, TweetRepository tweetRepository) {
+            this.userRepository = userRepository;
+            this.tweetRepository = tweetRepository;
+        }
 
-      andreasAntonopoulos.addFollowing(satoshiNakamoto, rogerVer, vitalikButerin, charlieLee);
-      userRepository.save(andreasAntonopoulos);
+        @Override
+        public void run(ApplicationArguments args) {
+            User rogerVer = userRepository.save(new User("Roger Ver", "rogerkver", "password"));
+            User andreasAntonopoulos = userRepository.save(new User("Aan Tonop", "aantonop", "password"));
+            User vitalikButerin = userRepository.save(new User("Vitalik Buterin", "VitalikButerin", "password"));
+            User charlieLee = userRepository.save(new User("Satoshi Junior", "SatoshiLite", "password"));
+            User satoshiNakamoto = userRepository.save(new User("Satoshi Nakamoto", "satoshiNakamoto", "password"));
 
-      charlieLee.addFollowing(satoshiNakamoto, rogerVer, vitalikButerin);
-      userRepository.save(charlieLee);
+            vitalikButerin.addFollowing(satoshiNakamoto, rogerVer);
+            userRepository.save(vitalikButerin);
 
-      tweetRepository.save(new Tweet("I created Bitcoin!", satoshiNakamoto));
-      tweetRepository.save(new Tweet("I'm an alias", satoshiNakamoto));
-      tweetRepository.save(new Tweet("Bitcoin cash is true Bitcoin!", rogerVer));
-      tweetRepository.save(new Tweet("ETH is all about smart contracts", vitalikButerin));
-      tweetRepository.save(new Tweet("Most of the ICO's will fail", andreasAntonopoulos));
-      tweetRepository.save(new Tweet("Cryptocurrencies are all about disruption", andreasAntonopoulos));
-      tweetRepository.save(new Tweet("Bitcoin mining is based on Proof of Work", andreasAntonopoulos));
-      tweetRepository.save(new Tweet("If Bitcoin is  crypto gold then Litecoin is crypto silver.", charlieLee));
+            rogerVer.addFollowing(satoshiNakamoto, andreasAntonopoulos);
+            userRepository.save(rogerVer);
+
+            andreasAntonopoulos.addFollowing(satoshiNakamoto, rogerVer, vitalikButerin, charlieLee);
+            userRepository.save(andreasAntonopoulos);
+
+            charlieLee.addFollowing(satoshiNakamoto, rogerVer, vitalikButerin);
+            userRepository.save(charlieLee);
+
+            satoshiNakamoto.addFollowing(andreasAntonopoulos, rogerVer, vitalikButerin, charlieLee);
+            userRepository.save(satoshiNakamoto);
+
+            tweetRepository.save(new Tweet("I created Bitcoin!", satoshiNakamoto));
+            tweetRepository.save(new Tweet("I'm an alias", satoshiNakamoto));
+            tweetRepository.save(new Tweet("Bitcoin cash is true Bitcoin!", rogerVer));
+            tweetRepository.save(new Tweet("ETH is all about smart contracts", vitalikButerin));
+            tweetRepository.save(new Tweet("Most of the ICO's will fail", andreasAntonopoulos));
+            tweetRepository.save(new Tweet("Cryptocurrencies are all about disruption", andreasAntonopoulos));
+            tweetRepository.save(new Tweet("Bitcoin mining is based on Proof of Work", andreasAntonopoulos));
+            tweetRepository.save(new Tweet("If Bitcoin is  crypto gold then Litecoin is crypto silver.", charlieLee));
+        }
     }
-  }
 }
