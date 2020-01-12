@@ -1,1 +1,6 @@
-<app-profile-table [following]="$following | async" [followers]="$followers | async"   [tweets] ="($tweets | async)?.length"></app-profile-table>
+<app-profile-table 
+    [following]="$following | async" 
+    [followers]="$followers | async" 
+    [fullName]="$fullName | async"  
+    [tweets] ="($tweets | async)?.length">
+</app-profile-table>

@@ -11,5 +11,6 @@ export class ProfileTableComponent {
   @Input() followers: number;
   @Input() following: number;
   @Input() tweets: TweetModel[];
+  @Input() fullName: string;
 
 }

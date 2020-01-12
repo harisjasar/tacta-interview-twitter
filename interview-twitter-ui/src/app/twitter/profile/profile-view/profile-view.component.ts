@@ -15,6 +15,7 @@ export class ProfileViewComponent implements OnInit {
   $followers: Observable<number>;
   $following: Observable<number>;
   $tweets: Observable<TweetModel[]>
+  $fullName: Observable<string>;
 
 
   constructor(private profileService: ProfileService, private authService: AuthService, private tweetService: TweetService){}
@@ -23,6 +24,7 @@ export class ProfileViewComponent implements OnInit {
     this.$followers = this.profileService.numFollowers();
     this.$following = this.profileService.numFollowing();
     this.$tweets = this.tweetService.fetchForUser(this.authService.getCurrentUser());
+    this.$fullName = this.profileService.fullName();
   }
 
 }

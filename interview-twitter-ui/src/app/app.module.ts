@@ -5,6 +5,7 @@ import {AppComponent} from "./app.component";
 import {HttpClientModule} from "@angular/common/http";
 import {AuthModule} from "./auth/auth.module";
 import { LogoutComponent } from './twitter/logout/logout.component';
+import { ProfileService } from './services/profile/profile.service';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,9 @@ import { LogoutComponent } from './twitter/logout/logout.component';
     AuthModule,
     BrowserModule,
     HttpClientModule,
+  ],
+  providers: [
+    ProfileService
   ],
   bootstrap: [AppComponent]
 })
