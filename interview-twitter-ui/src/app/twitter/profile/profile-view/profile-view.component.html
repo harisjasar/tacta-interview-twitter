@@ -2,5 +2,9 @@
     [following]="$following | async" 
     [followers]="$followers | async" 
     [fullName]="$fullName | async"  
-    [tweets] ="($tweets | async)?.length">
+    [tweets] ="($tweets | async)"
+    [numOfTweets] ="($tweets | async)?.length"
+    [numOfFollowers] = "($followers | async)?.length"
+    [numOfFollowing] = "($following | async)?.length"
+    >
 </app-profile-table>

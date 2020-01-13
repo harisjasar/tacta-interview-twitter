@@ -1,18 +1,44 @@
-<h3>Profile overview for  <b>{{fullName}}</b></h3>
+<h3>Profile overview for <b>{{fullName}}</b></h3>
 <br />
 <table class="table" id="profile-table">
   <thead>
-  <tr>
-    <th>Tweets</th>
-    <th>Followers</th>
-    <th>Following</th>
-  </tr>
+    <tr>
+      <th>
+        <h4><b>Tweets ({{numOfTweets}})</b></h4>
+      </th>
+    </tr>
   </thead>
   <tbody>
-  <tr>
-    <td>{{tweets}}</td>
-    <td>{{followers}}</td>
-    <td>{{following}}</td>
-  </tr>
+    <tr *ngFor="let tweet of tweets">
+      <td>{{tweet.content}}</td>
+    </tr>
+
+    <br />
+
+    <thead>
+      <tr>
+        <th>
+          <h4><b>Followers ({{numOfFollowers}})</b></h4>
+        </th>
+      </tr>
+    </thead>
+  <tbody>
+    <tr *ngFor="let follower of followers">
+      <td>{{follower.username}}</td>
+    </tr>
+    <br />
+    <thead>
+      <tr>
+        <th>
+          <h4><b>Following ({{numOfFollowing}})</b></h4>
+        </th>
+      </tr>
+    </thead>
+  <tbody>
+    <tr *ngFor="let follow of following">
+      <td>{{follow.username}}</td>
+    </tr>
+
+    <br />
   </tbody>
 </table>

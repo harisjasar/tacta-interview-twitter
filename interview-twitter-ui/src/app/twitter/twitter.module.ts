@@ -6,7 +6,6 @@ import {SharedModule} from "../shared/shared.module";
 import {TweetService} from "../services/tweet/tweet.service";
 import { ProfileService } from '../services/profile/profile.service';
 
-
 @NgModule({
   imports: [
     CommonModule,

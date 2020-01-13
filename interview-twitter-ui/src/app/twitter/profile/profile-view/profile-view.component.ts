@@ -12,17 +12,16 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class ProfileViewComponent implements OnInit {
 
-  $followers: Observable<number>;
-  $following: Observable<number>;
+  $followers: Observable<any>;
+  $following: Observable<any>;
   $tweets: Observable<TweetModel[]>
   $fullName: Observable<string>;
-
 
   constructor(private profileService: ProfileService, private authService: AuthService, private tweetService: TweetService){}
   
   ngOnInit() {
-    this.$followers = this.profileService.numFollowers();
-    this.$following = this.profileService.numFollowing();
+    this.$followers = this.profileService.followers();
+    this.$following = this.profileService.following();
     this.$tweets = this.tweetService.fetchForUser(this.authService.getCurrentUser());
     this.$fullName = this.profileService.fullName();
   }

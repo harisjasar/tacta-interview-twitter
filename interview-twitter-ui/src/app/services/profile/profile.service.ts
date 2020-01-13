@@ -3,8 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import {Observable} from "rxjs/Observable";
 
 
-const NUM_FOLLOWING_ENDPOINT = '/api/numFollowing';
-const NUM_FOLLOWERS_ENDPOINT = '/api/numFollowers';
+//const NUM_FOLLOWING_ENDPOINT = '/api/numFollowing';
+//const NUM_FOLLOWERS_ENDPOINT = '/api/numFollowers';
+const FOLLOWING_ENDPOINT = '/api/following';
+const FOLLOWERS_ENDPOINT = '/api/followers';
 const FULLNAME_ENDPOINT = '/api/fullName'
 
 @Injectable()
@@ -13,12 +15,12 @@ export class ProfileService {
   constructor(private http: HttpClient) { }
 
 
-  numFollowing(): Observable<number> {
-    return this.http.get<number>(NUM_FOLLOWING_ENDPOINT);
+  following(): Observable<any> {
+    return this.http.get<any>(FOLLOWING_ENDPOINT);
   }
 
-  numFollowers(): Observable<number> {
-    return this.http.get<number>(NUM_FOLLOWERS_ENDPOINT);
+  followers(): Observable<any> {
+    return this.http.get<any>(FOLLOWERS_ENDPOINT);
   }
 
   fullName(): Observable<string> {

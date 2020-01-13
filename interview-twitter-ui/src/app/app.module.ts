@@ -6,6 +6,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {AuthModule} from "./auth/auth.module";
 import { LogoutComponent } from './twitter/logout/logout.component';
 import { ProfileService } from './services/profile/profile.service';
+import { UserService } from './services/user/user.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ProfileService } from './services/profile/profile.service';
     HttpClientModule,
   ],
   providers: [
-    ProfileService
+    ProfileService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
