@@ -45,20 +45,16 @@ public class UserService implements UserDetailsService {
     }
 
     @Transactional
-    public int getNumUsersFollowing(Principal principal) {
-        User user = getUser(principal.getName());
-        return user.getFollowing().size();
-    }
-
-    @Transactional
-    public int getNumUsersFollowers(Principal principal) {
-        User user = getUser(principal.getName());
-        return user.getFollowers().size();
-    }
-
-    @Transactional
     public String getUserFullName(String username) {
         return userRepository.findOneByUsername(username).getFullName();
+    }
+
+    @Transactional
+    public UserDTO addUserToRepo(User newUser) {
+        User u = new User(newUser.getFullName(), newUser.getUsername(), newUser.getPassword());
+        User saved = userRepository.save(u);
+
+        return new UserDTO(saved);
     }
 
     private User getUser(String username) {

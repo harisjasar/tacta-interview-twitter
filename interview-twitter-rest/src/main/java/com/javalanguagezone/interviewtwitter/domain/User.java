@@ -39,7 +39,6 @@ public class User implements UserDetails {
     @JsonIgnore
     private String password;
 
-    @JsonIgnore
     private String fullName;
 
     public User(String fullName, String username, String password) {
